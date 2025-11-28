@@ -1,1 +1,3 @@
+# Ignore build directories anywhere in the tree
 build/
+**/build/

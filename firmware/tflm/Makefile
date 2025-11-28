@@ -2,10 +2,10 @@ OUT = build
 TFLM = .
 
 # Tools
-CXX = riscv32-unknown-elf-g++
-AR = riscv32-unknown-elf-ar
+CXX = riscv64-elf-g++
+AR = riscv64-elf-ar
 
-# TFLM definess
+# TFLM defines
 TFLM_DEFINES = -DTF_LITE_STATIC_MEMORY -DTF_LITE_DISABLE_X86_NEON
 TFLM_DEFINES += -DGEMMLOWP_ALLOW_SLOW_SCALAR_FALLBACK
 TFLM_DEFINES += -DTF_LITE_USE_GLOBAL_CMATH_FUNCTIONS

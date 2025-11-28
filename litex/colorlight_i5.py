@@ -20,8 +20,6 @@ from litex.soc.integration.builder import *
 from litex.soc.cores.video import VideoHDMIPHY
 from litex.soc.cores.led import LedChaser
 
-from litex.soc.cores.spi import SPIMaster
-from litex.soc.cores.bitbang import I2CMaster
 from litex.soc.cores.gpio import GPIOOut
 from litex.build.generic_platform import Subsignal, Pins, IOStandard
 
@@ -130,43 +128,18 @@ class BaseSoC(SoCCore):
         SoCCore.__init__(self, platform, int(sys_clk_freq), ident = "LiteX SoC on Colorlight " + board.upper(), **kwargs)
 
         # Leds -------------------------------------------------------------------------------------
-        if with_led_chaser:
-            ledn = platform.request_all("user_led_n")
-            self.leds = LedChaser(pads=ledn, sys_clk_freq=sys_clk_freq)
-
-        # N2
-        spi_pads = [
-            ("spi", 0,
-                Subsignal("clk",  Pins("G20")),
-                Subsignal("mosi", Pins("L18")),
-                Subsignal("miso", Pins("M18")),
-                Subsignal("cs_n", Pins("N17")),
-                IOStandard("LVCMOS33")
-            ),
-            ("lora_reset", 0, Pins("L20"), IOStandard("LVCMOS33"))
-        ]
-
-        platform.add_extension(spi_pads)
-
-        self.spi = SPIMaster(pads=platform.request("spi"), data_width=8, sys_clk_freq=sys_clk_freq, spi_clk_freq=1e6)
-        self.add_csr("spi")
-
-        self.submodules.lora_reset = GPIOOut(platform.request("lora_reset"))
-        self.add_csr("lora_reset")
-
-        # J1
-        i2c_pads = [
-            ("i2c", 0,
-                Subsignal("scl", Pins("F3")),
-                Subsignal("sda", Pins("G3")),
+        leds_pads = [
+            ("leds_ext", 0, 
+                Pins("P17 P18 N18 L20 L18 G20 M18 N17"),
                 IOStandard("LVCMOS33")
             )
         ]
 
-        platform.add_extension(i2c_pads)
-
-        self.submodules.i2c = I2CMaster(pads=platform.request("i2c"))
-        self.add_csr("i2c")
+        platform.add_extension(leds_pads)
+        
+        # Substitui o controle padrão de LEDs por GPIO de 8 bits para placa de expansão
+        self.submodules.leds = GPIOOut(platform.request("leds_ext"))
+        self.add_csr("leds")
 
 
         # SPI Flash --------------------------------------------------------------------------------

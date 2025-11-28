@@ -1,0 +1,56 @@
+riscv-none-elf-gcc -MD -MP -Os -mno-save-restore -march=rv32i2p0_m     -mabi=ilp32 -D__picorv32__  -g3 -no-pie -fomit-frame-pointer -Wall -fno-builtin -fno-stack-protector -I/home/heriberto/fpga/pythondata-software-picolibc/pythondata_software_picolibc/data/newlib/libc/tinystdio -I/home/heriberto/fpga/pythondata-software-picolibc/pythondata_software_picolibc/data/newlib/libc/include -I/home/heriberto/fpga/litex/litex/soc/software/libbase -I/home/heriberto/fpga/litex/litex/soc/software/include -I/home/heriberto/fpga/litex/litex/soc/software -I/mnt/d/execucao-tensorflowlitemicro-em-soc-litex/build/colorlight_i5/software/include -I/mnt/d/execucao-tensorflowlitemicro-em-soc-litex/build/colorlight_i5/software/include/../libc -I/home/heriberto/fpga/litex/litex/soc/cores/cpu/picorv32 -fexceptions -Wstrict-prototypes -Wold-style-definition -Wmissing-prototypes -c /home/heriberto/fpga/litex/litex/soc/cores/cpu/picorv32/crt0.S -o build/crt0.o
+riscv-none-elf-g++ -mno-save-restore -march=rv32i2p0_m     -mabi=ilp32 -D__picorv32__  -Os -g -std=c++17 -fno-rtti -fno-exceptions -ffunction-sections -fdata-sections -Wall -I. -I/mnt/d/execucao-tensorflowlitemicro-em-soc-litex/build/colorlight_i5/software/include -I/home/heriberto/fpga/litex/litex/soc/software/include -I/home/heriberto/fpga/litex/litex/soc/software/libbase -I/home/heriberto/fpga/litex/litex/soc/cores/cpu/picorv32 -Iplatform -Itflm -Itflm/third_party/flatbuffers/include -Itflm/third_party/gemmlowp -Itflm/third_party/ruy -DTF_LITE_STATIC_MEMORY -DTF_LITE_DISABLE_X86_NEON -DGEMMLOWP_ALLOW_SLOW_SCALAR_FALLBACK -DTF_LITE_USE_GLOBAL_CMATH_FUNCTIONS -DTF_LITE_USE_GLOBAL_MAX -DTF_LITE_USE_GLOBAL_MIN -c main.cc -o build/main.o
+main.cc: In function 'int main()':
+main.cc:155:59: warning: format '%d' expects argument of type 'int', but argument 2 has type 'uint32_t' {aka 'long unsigned int'} [-Wformat=]
+  155 |                 printf("Model provided is schema version %d not equal "
+      |                                                          ~^
+      |                                                           |
+      |                                                           int
+      |                                                          %ld
+  156 |                            "to supported version %d.\n",
+  157 |                            model->version(), TFLITE_SCHEMA_VERSION);
+      |                            ~~~~~~~~~~~~~~~~                
+      |                                          |
+      |                                          uint32_t {aka long unsigned int}
+main.cc:191:24: warning: unused variable 'quantized_input' [-Wunused-variable]
+  191 |                 int8_t quantized_input = (int8_t)round(sin(x) * 127.0f);
+      |                        ^~~~~~~~~~~~~~~
+main.cc:203:23: warning: unused variable 'expected' [-Wunused-variable]
+  203 |                 float expected = sin(x);
+      |                       ^~~~~~~~
+main.cc: At global scope:
+main.cc:99:13: warning: 'void console_service()' defined but not used [-Wunused-function]
+   99 | static void console_service(void)
+      |             ^~~~~~~~~~~~~~~
+riscv-none-elf-g++ -mno-save-restore -march=rv32i2p0_m     -mabi=ilp32 -D__picorv32__  -Os -g -std=c++17 -fno-rtti -fno-exceptions -ffunction-sections -fdata-sections -Wall -I. -I/mnt/d/execucao-tensorflowlitemicro-em-soc-litex/build/colorlight_i5/software/include -I/home/heriberto/fpga/litex/litex/soc/software/include -I/home/heriberto/fpga/litex/litex/soc/software/libbase -I/home/heriberto/fpga/litex/litex/soc/cores/cpu/picorv32 -Iplatform -Itflm -Itflm/third_party/flatbuffers/include -Itflm/third_party/gemmlowp -Itflm/third_party/ruy -DTF_LITE_STATIC_MEMORY -DTF_LITE_DISABLE_X86_NEON -DGEMMLOWP_ALLOW_SLOW_SCALAR_FALLBACK -DTF_LITE_USE_GLOBAL_CMATH_FUNCTIONS -DTF_LITE_USE_GLOBAL_MAX -DTF_LITE_USE_GLOBAL_MIN -c tflm/examples/hello_world/models/hello_world_int8_model_data.cc -o build/tflm/examples/hello_world/models/hello_world_int8_model_data.o
+riscv-none-elf-g++ -nostdlib -nodefaultlibs -Wl,--no-dynamic-linker -Wl,--build-id=none -MD -MP -Os -mno-save-restore -march=rv32i2p0_m     -mabi=ilp32 -D__picorv32__  -g3 -no-pie -fomit-frame-pointer -Wall -fno-builtin -fno-stack-protector -I/home/heriberto/fpga/pythondata-software-picolibc/pythondata_software_picolibc/data/newlib/libc/tinystdio -I/home/heriberto/fpga/pythondata-software-picolibc/pythondata_software_picolibc/data/newlib/libc/include -I/home/heriberto/fpga/litex/litex/soc/software/libbase -I/home/heriberto/fpga/litex/litex/soc/software/include -I/home/heriberto/fpga/litex/litex/soc/software -I/mnt/d/execucao-tensorflowlitemicro-em-soc-litex/build/colorlight_i5/software/include -I/mnt/d/execucao-tensorflowlitemicro-em-soc-litex/build/colorlight_i5/software/include/../libc -I/home/heriberto/fpga/litex/litex/soc/cores/cpu/picorv32 -fexceptions -Wstrict-prototypes -Wold-style-definition -Wmissing-prototypes -L/mnt/d/execucao-tensorflowlitemicro-em-soc-litex/build/colorlight_i5/software/include -T linker.ld -N \
+	-Wl,--start-group \
+		build/crt0.o build/main.o build/tflm/examples/hello_world/models/hello_world_int8_model_data.o  tflm/build/libtflm.a \
+		-lstdc++ -lc -lm -lgcc \
+	-Wl,--end-group \
+	-Wl,--gc-sections -Wl,--allow-multiple-definition \
+	-Wl,-Map,build/main.elf.map -o build/main.elf
+/home/heriberto/toolchains/xpack-riscv-none-elf-gcc-12.2.0-1/bin/../lib/gcc/riscv-none-elf/12.2.0/../../../../riscv-none-elf/bin/ld: build/main.o: in function `.L0 ':
+/home/heriberto/fpga/litex/litex/soc/cores/cpu/picorv32/irq.h:39: undefined reference to `uart_init'
+/home/heriberto/toolchains/xpack-riscv-none-elf-gcc-12.2.0-1/bin/../lib/gcc/riscv-none-elf/12.2.0/../../../../riscv-none-elf/bin/ld: /home/heriberto/toolchains/xpack-riscv-none-elf-gcc-12.2.0-1/bin/../lib/gcc/riscv-none-elf/12.2.0/../../../../riscv-none-elf/lib/libc.a(lib_a-abort.o): in function `abort':
+(.text.abort+0xa): undefined reference to `_exit'
+/home/heriberto/toolchains/xpack-riscv-none-elf-gcc-12.2.0-1/bin/../lib/gcc/riscv-none-elf/12.2.0/../../../../riscv-none-elf/bin/ld: /home/heriberto/toolchains/xpack-riscv-none-elf-gcc-12.2.0-1/bin/../lib/gcc/riscv-none-elf/12.2.0/../../../../riscv-none-elf/lib/libc.a(lib_a-signalr.o): in function `.L0 ':
+(.text._kill_r+0x16): undefined reference to `_kill'
+/home/heriberto/toolchains/xpack-riscv-none-elf-gcc-12.2.0-1/bin/../lib/gcc/riscv-none-elf/12.2.0/../../../../riscv-none-elf/bin/ld: /home/heriberto/toolchains/xpack-riscv-none-elf-gcc-12.2.0-1/bin/../lib/gcc/riscv-none-elf/12.2.0/../../../../riscv-none-elf/lib/libc.a(lib_a-signalr.o): in function `_getpid_r':
+(.text._getpid_r+0x0): undefined reference to `_getpid'
+/home/heriberto/toolchains/xpack-riscv-none-elf-gcc-12.2.0-1/bin/../lib/gcc/riscv-none-elf/12.2.0/../../../../riscv-none-elf/bin/ld: /home/heriberto/toolchains/xpack-riscv-none-elf-gcc-12.2.0-1/bin/../lib/gcc/riscv-none-elf/12.2.0/../../../../riscv-none-elf/lib/libc.a(lib_a-sbrkr.o): in function `.L0 ':
+(.text._sbrk_r+0x12): undefined reference to `_sbrk'
+/home/heriberto/toolchains/xpack-riscv-none-elf-gcc-12.2.0-1/bin/../lib/gcc/riscv-none-elf/12.2.0/../../../../riscv-none-elf/bin/ld: /home/heriberto/toolchains/xpack-riscv-none-elf-gcc-12.2.0-1/bin/../lib/gcc/riscv-none-elf/12.2.0/../../../../riscv-none-elf/lib/libc.a(lib_a-writer.o): in function `.L0 ':
+(.text._write_r+0x18): undefined reference to `_write'
+/home/heriberto/toolchains/xpack-riscv-none-elf-gcc-12.2.0-1/bin/../lib/gcc/riscv-none-elf/12.2.0/../../../../riscv-none-elf/bin/ld: /home/heriberto/toolchains/xpack-riscv-none-elf-gcc-12.2.0-1/bin/../lib/gcc/riscv-none-elf/12.2.0/../../../../riscv-none-elf/lib/libc.a(lib_a-closer.o): in function `.L0 ':
+(.text._close_r+0x12): undefined reference to `_close'
+/home/heriberto/toolchains/xpack-riscv-none-elf-gcc-12.2.0-1/bin/../lib/gcc/riscv-none-elf/12.2.0/../../../../riscv-none-elf/bin/ld: /home/heriberto/toolchains/xpack-riscv-none-elf-gcc-12.2.0-1/bin/../lib/gcc/riscv-none-elf/12.2.0/../../../../riscv-none-elf/lib/libc.a(lib_a-fstatr.o): in function `.L0 ':
+(.text._fstat_r+0x16): undefined reference to `_fstat'
+/home/heriberto/toolchains/xpack-riscv-none-elf-gcc-12.2.0-1/bin/../lib/gcc/riscv-none-elf/12.2.0/../../../../riscv-none-elf/bin/ld: /home/heriberto/toolchains/xpack-riscv-none-elf-gcc-12.2.0-1/bin/../lib/gcc/riscv-none-elf/12.2.0/../../../../riscv-none-elf/lib/libc.a(lib_a-isattyr.o): in function `.L0 ':
+(.text._isatty_r+0x12): undefined reference to `_isatty'
+/home/heriberto/toolchains/xpack-riscv-none-elf-gcc-12.2.0-1/bin/../lib/gcc/riscv-none-elf/12.2.0/../../../../riscv-none-elf/bin/ld: /home/heriberto/toolchains/xpack-riscv-none-elf-gcc-12.2.0-1/bin/../lib/gcc/riscv-none-elf/12.2.0/../../../../riscv-none-elf/lib/libc.a(lib_a-lseekr.o): in function `.L0 ':
+(.text._lseek_r+0x18): undefined reference to `_lseek'
+/home/heriberto/toolchains/xpack-riscv-none-elf-gcc-12.2.0-1/bin/../lib/gcc/riscv-none-elf/12.2.0/../../../../riscv-none-elf/bin/ld: /home/heriberto/toolchains/xpack-riscv-none-elf-gcc-12.2.0-1/bin/../lib/gcc/riscv-none-elf/12.2.0/../../../../riscv-none-elf/lib/libc.a(lib_a-readr.o): in function `.L0 ':
+(.text._read_r+0x18): undefined reference to `_read'
+collect2: error: ld returned 1 exit status
+make: *** [Makefile:64: build/main.elf] Error 1
